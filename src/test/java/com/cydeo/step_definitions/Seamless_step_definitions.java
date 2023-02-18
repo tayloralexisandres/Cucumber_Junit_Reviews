@@ -4,6 +4,7 @@ import com.cydeo.pages.SeamlessPage;
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.ConfigReader;
 import com.cydeo.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -31,6 +32,8 @@ public class Seamless_step_definitions {
         BrowserUtils.sleep(1);
     }
 
+
+
     @When("user clicks the log in button")
     public void user_clicks_the_log_in_button() {
         seamlessPage.loginButton.click();
@@ -43,4 +46,32 @@ public class Seamless_step_definitions {
     BrowserUtils.verify_title_contains("Dashboard");
 
     }
+
+
+
+
+    @And("user enters valid password {string}")
+    public void userEntersValidPassword(String arg0) {
+        if (arg0.equals("empty")) {
+            seamlessPage.txt_password.sendKeys(" ");
+        } else {
+            seamlessPage.txt_password.sendKeys(arg0);
+        }
+    }
+
+        @When("user enters valid username {string}")
+        public void userEntersValidUsername (String arg0){
+            if (arg0.equals("empty")) {
+                seamlessPage.txt_username.sendKeys(" ");
+            } else {
+                seamlessPage.txt_username.sendKeys(arg0);
+            }
+
+        }
+        @Then("user should not be able to login")
+        public void user_should_not_be_able_to_login () {
+            BrowserUtils.verify_title_contains("Seamlessly");
+
+        }
+
 }

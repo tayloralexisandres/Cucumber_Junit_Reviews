@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         plugin = {"html:target/reports.html"},
         features ="src/test/resources/features",
         glue = "com/cydeo/step_definitions",
-        tags="@validLogin",
+        tags="@validLoginWithInvalidParamsSceOutline",
         dryRun = false,
         publish = true
 
